@@ -41,8 +41,8 @@ var timerId1 = Timer.repeat(function() {
     - until time [String] xxxx-xx-xx xx:xx:xx
 ```
 Timer.until(function() {
-            console.log("until 2016-08-02 11:32:30");
-        }, "2016-08-02 23:32:50");
+    console.log("until 2016-08-02 11:32:30");
+}, "2016-08-02 23:32:50");
 ```
 
 * Timer.frame
