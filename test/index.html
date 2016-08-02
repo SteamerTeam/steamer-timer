@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>steamer-timer</title>
+</head>
+<body>
+	<div id="bar" style="width: 50%;height: 20px;background-color: red;"></div>
+	<script>
+		var exports = window.exports || {};
+	</script>
+    <script src="../index.js"></script>
+    <script>
+    	var Timer = exports;
+    	console.log(Timer);
+
+    	Timer.wait(function() {
+    		console.log("===wait 1s===");
+    	}, 1000);
+
+
+    	Timer.wait(function() {
+    		console.log("===wait 2s===");
+    	}, "2s");
+
+    	var tick = 0;
+    	var timerId1 = Timer.repeat(function() {
+    		tick++;
+    		console.log("===tick:" + tick + "===");
+    		if (tick > 3) {
+    			Timer.clear(timerId1);
+    		}
+    	}, "1s");
+
+    	Timer.until(function() {
+    		console.log("until 2016-08-02 11:32:30");
+    	}, "2016-08-02 23:32:50");
+
+    	var left = 0;
+    	function moveBar(timeStamp) {
+    		var bar = document.getElementById("bar");
+    		left += 10;
+    		bar.style.marginLeft = left + "px";
+
+    		if (left <= 500) {
+    			Timer.frame(moveBar);
+    		}
+    	}
+    	Timer.frame(moveBar);
+    </script>
+</body>
+</html>
